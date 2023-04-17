@@ -1,0 +1,208 @@
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+  }
+  
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  header h1 {
+    font-size: 24px;
+  }
+  
+  nav ul {
+    display: flex;
+  }
+  
+  nav ul li {
+    list-style: none;
+    margin-left: 20px;
+  }
+  
+  nav ul li:first-child {
+    margin-left: 0;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  main {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  main .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  main h2 {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  main p {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    border: #333 solid;
+    border-radius: 5px 0 0 5px;
+    width: 500px;
+  }
+  
+  button[type="submit"] {
+    background-color: #ffa000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: solid #3f3939;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #ffca28;
+  } */
+  /* ---------------------------------- */
+
+  /* Header */
+/* Resetting Default Browser Styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Body Background Color */
+body {
+	background-color: #f0f0f0;
+}
+
+/* Header Styles */
+header {
+	background-color: #1c1c1c;
+	color: #fff;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Logo Styles */
+header h1 {
+	font-size: 36px;
+}
+
+/* User Options Styles */
+.user-options {
+	display: flex;
+	align-items: center;
+}
+
+/* Navigation Links Styles */
+.nav-links a {
+	margin-right: 10px;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Hero Section Styles */
+#hero-section {
+	position: relative;
+	margin-top: 50px;
+}
+
+/* Background Image Styles */
+#hero-section img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+/* Book a Ride Button Styles */
+#hero-section button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #ff5e00;
+	color: #fff;
+	font-size: 24px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+/* Blog Container Styles */
+#blog-container {
+	margin-top: 50px;
+	padding: 20px;
+	background-color: #fff;
+}
+
+/* Blog Area Styles */
+#blog-container h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.blog-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.blog-link {
+	padding: 10px 20px;
+	background-color: #ff5e00;
+	color: #fff;
+	font-size: 18px;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+/* Footer Styles */
+footer {
+	background-color: #1c1c1c;
+	color: #fff;
+	padding: 10;
+  text-align: center;
+}

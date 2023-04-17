@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mapbox Map with Buttons</title>
+	<link rel="stylesheet" type="text/css" href="/assets/new_map.css">
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+    <form action="/new_map" method="post">
+		<div id='map'></div>
+		<div class="button-container">
+			<div class="button-wrapper">
+				<button class="button" name="vehicle" value="SUV">
+					<img src="/images/suv.jpg" alt="SUV" class="button-img">
+					SUV
+				</button>
+			</div>
+			<div class="button-wrapper">
+				<button class="button" name="vehicle" value="Sedan">
+					<img src="/images/sedan.jpg" alt="Sedan" class="button-img">
+					Sedan
+				</button>
+			</div>
+			<div class="button-wrapper">
+				<button class="button" name="vehicle" value="Auto">
+					<img src="/images/auto.jpg" alt="Auto" class="button-img">
+					Auto
+				</button>
+			</div>
+			<div class="button-wrapper">
+				<button class="button" name="vehicle" value="Bike">
+					<img src="/images/bike.jpg" alt="Bike" class="button-img">
+					Bike
+				</button>
+			</div>
+		</div>
+		<div>
+			<input type="submit" name="submit" value="Submit">
+		</div>
+	</form>
+	<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiYWRpdHlhNTEwIiwiYSI6ImNsZmpsbmMxbzAyMmMzeW10aGNveTY2ZWkifQ.o0pfNFXREpMQTLa12dQ7Kw';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/mapbox/streets-v12', // style URL
+center: [77.2733882, 28.5474484], // starting position [lng, lat]
+zoom:15 // starting zoom
+});
+
+// Set marker options.
+const marker = new mapboxgl.Marker({
+    color: "#800080",
+    draggable: true
+}).setLngLat([77.2733882, 28.5474484])
+    .addTo(map);
+
+
+	</script>
+</body>
+</html>

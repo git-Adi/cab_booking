@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Mapbox Full Screen</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css' rel='stylesheet' />
+    
+    <style>
+      body { margin: 0; padding: 0; }
+      #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+	  body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 25%; /* set the height to 75% of the screen height */
+  width: 100%;
+}
+
+#submit-btn {
+  padding: 10px;
+  background-color: #0074D9;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 85%;
+  right: 50%;
+}
+    </style>
+	
+  </head>
+  <body>
+    <div id='map'></div>
+
+    <div id='form-container'>
+      
+    </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script> -->
+    <script>
+
+      // console.log(axios.get("http://127.0.0.1:4000/get_data").data);
+		var locn = "Hello";
+		
+
+    
+      mapboxgl.accessToken = 'pk.eyJ1IjoiYWRpdHlhNTEwIiwiYSI6ImNsZmpsbmMxbzAyMmMzeW10aGNveTY2ZWkifQ.o0pfNFXREpMQTLa12dQ7Kw';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [77.2733882, 28.5474484],
+        zoom: 12
+      });
+	  const marker = new mapboxgl.Marker({
+			color: "#800080",
+			draggable: true
+		}).setLngLat([77.2733882, 28.5474484])
+			.addTo(map);
+	  // Define the new_marker variable
+
+	  var new_marker = new mapboxgl.Marker({
+    color: '#F7455D',
+    draggable: true
+});
+
+var routeLayerExists = false;
+
+map.on('click', function(e) {
+    var lngLat = e.lngLat;
+    var url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + lngLat.lng + ',' + lngLat.lat + '.json?access_token=' + mapboxgl.accessToken;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            var locationName = data.features[0].place_name;
+            // console.log(locationName);
+            const s = document.getElementById("location-input");
+            s.value = locationName
+			locn=locationName;
+			document.getElementById('location-input').value = locationName;
+            new_marker.setLngLat(lngLat).addTo(map);
+
+            // Get the longitude and latitude values of the new marker
+            var newLngLat = new_marker.getLngLat();
+
+            // Create a geojson object representing the line between the two markers
+            var geojson = {
+                type: 'FeatureCollection',
+                features: [{
+                    type: 'Feature',
+                    geometry: {
+                        type: 'LineString',
+                        coordinates: [
+                            [marker.getLngLat().lng, marker.getLngLat().lat],
+                            [newLngLat.lng, newLngLat.lat]
+                        ]
+                    }
+                }]
+            };
+
+            // Remove the 'route' layer if it already exists
+            if (routeLayerExists) {
+                map.removeLayer('route');
+                map.removeSource('route');
+            }
+
+            // Add the line to the map using the addLayer method
+            map.addLayer({
+                id: 'route',
+                type: 'line',
+                source: {
+                    type: 'geojson',
+                    data: geojson
+                },
+                paint: {
+                    'line-color': '#888',
+                    'line-width': 5
+                }
+            });
+
+            routeLayerExists = true;
+        });
+		console.log(locn+"hello this is my loaction");
+  
+});
+
+
+	// export { locn };
+	</script>
+	<form method="POST" action="/location">
+		<input type="hidden" name="location" id="location-input">
+		<input type="submit" value="Submit"  id = "submit-btn">
+	</form>
+	  
+	
+  </body>
+</html>

@@ -1,0 +1,60 @@
+
+#map-container {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+  }
+
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%;height: 50%;z-index: 100; }
+   
+  #map {
+    flex: 1;
+  }
+  
+  #vehicle-options {
+    padding: 1rem;
+    background-color: #f5f5f5;
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    margin-top: 28em;
+  }
+  
+  #vehicle-options p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  #vehicle-options ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #vehicle-options li {
+    margin-bottom: 0.5rem;
+  }
+  
+  #vehicle-options label {
+    display: inline-block;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+  
+  #vehicle-form button[type="submit"] {
+    margin-top: 20em;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    background-color: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+  }
+  
+  #vehicle-form button[type="submit"]:hover {
+    background-color: #005a9e;
+  }
+  

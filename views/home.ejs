@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Ride Booking Website</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/home_style.css">
+</head>
+<body>
+	<header>
+		<h1>My Ride Booking Website</h1>
+		<div class="user-options">
+			<p>Hi, <%= userData %> ! </p>
+			<div class="nav-links">
+				<a href="#">About Us</a>
+				<a href="#">Contact</a>
+				<a href="#">Logout</a>
+			</div>
+		</div>
+	</header>
+	<div id="hero-section">
+		<img src="https://www.coachingselect.com/public/blogs/blog-16691163976.PNG" alt="Background Image">
+		<form action="/home" method="post">
+			<button type="submit" class="button">Book A Ride</button>
+		  </form>
+	</div>
+	<div id="blog-container">
+		<h2>Blog Area</h2>
+		<div class="blog-row">
+			<a href="#" class="blog-link">Blog 1</a>
+			<a href="#" class="blog-link">Blog 2</a>
+			<a href="#" class="blog-link">Blog 3</a>
+			<a href="#" class="blog-link">Blog 4</a>
+		</div>
+	</div>
+	<footer>
+		<p>&copy; 2023 My Ride Booking Website</p>
+	</footer>
+</body>
+</html>

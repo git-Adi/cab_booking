@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display a map on a webpage</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/map.css">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiYWRpdHlhNTEwIiwiYSI6ImNsZmpsbmMxbzAyMmMzeW10aGNveTY2ZWkifQ.o0pfNFXREpMQTLa12dQ7Kw';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/mapbox/streets-v12', // style URL
+center: [77.2733882, 28.5474484], // starting position [lng, lat]
+zoom:15 // starting zoom
+});
+
+// Set marker options.
+const marker = new mapboxgl.Marker({
+    color: "#800080",
+    draggable: true
+}).setLngLat([77.2733882, 28.5474484])
+    .addTo(map);
+
+</script>
+
+<div id="map-container">
+    <div id="map"></div>
+    <form id="vehicle-form" action="/map" method="post">
+      <div id="vehicle-options">
+        <p>Select a vehicle:</p>
+        <ul>
+          <li><label><input type="radio" name="vehicle" value="SUV">SUV</label></li>
+          <li><label><input type="radio" name="vehicle" value="SEDAN">Sedan</label></li>
+          <li><label><input type="radio" name="vehicle" value="Auto">Auto</label></li>
+          <li><label><input type="radio" name="vehicle" value="Bike">Bike</label></li>
+        </ul>
+      </div>
+      <button type="submit" >Submit</button>
+    </form>
+  </div>
+  <!-- <script>
+	function submitForm() {
+	var radioButtonValue = document.querySelector('input[name="radio-button"]:checked').value;
+	// Do something with the value here
+  };
+  </script> -->
+  
+  
+ 
+</body>
+</html>

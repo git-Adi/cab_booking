@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Pay Now</title>
+	<link rel="stylesheet" href="../assets/cost.css">
+</head>
+<body>
+    <form action="/cost" method="POST">
+        <div class="container">
+            <div class="box">
+                <h1>Distance Covered: <%= d1 %> km</h1>
+                <h1>Time Taken: <span id="time"></span></h1>
+                <h1>Vehicle Chosen: <%= d2 %> </h1>
+                <h1>Amount to Pay: <span id="amount" name="amount"></span></h1>
+                <button id="pay-now">Pay Now</button>
+            </div>
+        </div>
+    </form>
+
+	<script>
+        const timeTaken = {
+        auto: 7,
+        bike: 5,
+        suv: 5,
+        sedan: 5
+        };
+
+        const chargePerKm = {
+        auto: 4,
+        bike: 2.5,
+        suv: 10,
+        sedan: 12.5
+        };
+
+        // Get the distance value from the HTML page
+        const distanceElement = document.querySelector('h1:nth-of-type(1)');
+        const distanceText = distanceElement.textContent;
+        const distance = parseFloat(distanceText.split(':')[1]);
+
+        // Round off the distance to the nearest whole number
+        const roundedDistance = Math.ceil(distance);
+
+        // Get the vehicle chosen from the HTML page
+        const vehicleElement = document.querySelector('h1:nth-of-type(3)');
+        const vehicleText = vehicleElement.textContent;
+        const vehicle = vehicleText.split(':')[1].trim().toLowerCase();
+
+        // Calculate the total time taken
+        const totalTime = roundedDistance * timeTaken[vehicle];
+
+        // Calculate the amount to pay based on distance and vehicle chosen
+        const amount = roundedDistance * chargePerKm[vehicle];
+
+        // Display the time taken and amount to pay in the HTML page
+        const timeElement = document.getElementById('time');
+        timeElement.textContent = totalTime + ' min';
+
+        const amountElement = document.getElementById('amount');
+        amountElement.textContent = '₹' + amount.toFixed(2);
+        
+
+        
+        // Add a click event listener to the "Pay Now" button that displays the amount to pay
+        const payNowButton = document.getElementById('pay-now');
+        payNowButton.addEventListener('click', function() {
+            alert('Your amount to pay is: ₹' + amount.toFixed(2));
+        });
+
+    </script>
+    <form action="/cost" method="post">
+        <input type="hidden" name="amountele" id="ae">
+    </form>
+</body>
+</html>
